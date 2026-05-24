@@ -388,7 +388,7 @@ class DataMiningApp:
             pd.set_option('display.max_columns', None)
             pd.set_option('display.width', 1000)
             pd.set_option('display.max_colwidth', None)
-            res = "PHÂN TÍCH LUẬT KẾT HỢP (APRIORI TỰ ĐỘNG)\n"
+            res = "PHÂN TÍCH LUẬT KẾT HỢP \n"
             res += "=" * 65 + "\n"
             res += f" - Ngưỡng min_sup: {sup} | Ngưỡng min_conf: {conf}\n"
             res += f" - Tổng số giao dịch xử lý: {len(trans)}\n\n"

@@ -1,0 +1,11 @@
+ID,GT,T,NL,LGD,TN,TC
+1,Nữ,20..25,Giỏi,Rồi,Rất cao,Có
+2,Nam,20..25,Khá,Chưa,Khá,Không
+3,Nữ,26..30,Giỏi,Chưa,Khá,Có
+4,Nữ,31..40,T.Bình,Chưa,T.Bình,Có
+5,Nam,26..30,T.Bình,Rồi,Rất cao,Không
+6,Nữ,26..30,Khá,Chưa,Cao,Không
+7,Nữ,31..40,Khá,Chưa,T.Bình,Không
+8,Nam,26..30,Khá,Rồi,Cao,Có
+9,Nữ,>40,Giỏi,Rồi,T.Bình,Không
+10,Nữ,26..30,Giỏi,Chưa,Khá,Có

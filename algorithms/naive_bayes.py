@@ -44,6 +44,11 @@ class NaiveBayesClassifier:
                         prob = count_val / n_samples_cls if n_samples_cls > 0 else 0.0
                         
                     value_probs[val] = prob
+                
+                if self.smoothing:
+                    value_probs["<UNSEEN>"] = 1 / (n_samples_cls + r)
+                else:
+                    value_probs["<UNSEEN>"] = 0.0
                     
                 self.feature_probs[cls].append(value_probs)
 
@@ -56,7 +61,7 @@ class NaiveBayesClassifier:
         self.logs += "=" * 80 + "\n\n"
         
         for idx, sample in enumerate(X_predict, 1):
-            self.logs += f"👉 XÉT ĐỐI TƯỢNG CẦN DỰ ĐOÁN X{idx}:\n"
+            self.logs += f" XÉT ĐỐI TƯỢNG CẦN DỰ ĐOÁN X{idx}:\n"
             sample_desc = ", ".join([f"{feature_names[i]} = '{sample[i]}'" for i in range(len(sample))])
             self.logs += f"   Mẫu X = {{ {sample_desc} }}\n"
             self.logs += f"   -----------------------------------------------------------------\n"
@@ -73,11 +78,9 @@ class NaiveBayesClassifier:
                 
                 for f_idx, f_val in enumerate(sample):
                     prob_dict = self.feature_probs[cls][f_idx]
-                    prob = prob_dict.get(f_val, 17) 
                     
-                    if not self.smoothing and prob == 0:
-                        prob = 0.0
-                        
+                    prob = prob_dict.get(f_val, prob_dict["<UNSEEN>"]) 
+                    
                     score *= prob
                     formula_str += f" * P({feature_names[f_idx]}='{f_val}' | {cls})"
                     calc_str += f" * {round(prob, 4)}"
